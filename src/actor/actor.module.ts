@@ -5,7 +5,7 @@ import { ActorController } from './actor.controller';
 import { Actor } from './actor.sakila.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Actor])],
+  imports: [TypeOrmModule.forFeature([Actor], 'sakilaConnection')],
   providers: [ActorService],
   controllers: [ActorController],
 })

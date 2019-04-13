@@ -8,15 +8,4 @@
 	"database": "nestormone",
 	"entities": ["src/**/**.base.entity{.ts,.js}"],
 	"synchronize": true
-},
-{
-	"name": "sakila",
-	"type": "mysql",
-	"host": "localhost",
-	"port": 3306,
-	"username": "godzzo",
-	"password": "abc123",
-	"database": "sakila",
-	"entities": ["src/**/**.sakila.entity{.ts,.js}"],
-	"synchronize": false
 }]
