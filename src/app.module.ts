@@ -18,7 +18,8 @@ const defaultOptions = {
 	port: 3306,
 	username: "godzzo",
 	password: "abc123",
-	synchronize: true
+	synchronize: true,
+	logging: true
 };
 
 @Module({
@@ -39,7 +40,7 @@ const defaultOptions = {
 		ActorModule,
 		PhotoModule
 	],
-	controllers: [AppController, ActorController, PhotoController, ChartController],
+	controllers: [AppController, ChartController],
 	providers: [AppService, ActorService, PhotoService],
 })
 export class AppModule {
