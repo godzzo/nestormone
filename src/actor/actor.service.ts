@@ -15,7 +15,20 @@ export class ActorService {
 	}
 
 	async find(filters: any) : Promise<Actor[]> {
-		return await this.actorRepository.find({ where: filters });
+
+		const cfg : any = { where: filters };
+
+		if (filters.skip) {
+			cfg.skip = parseInt(filters.skip);
+		}
+
+		if (filters.take) {
+			cfg.take = parseInt(filters.take);
+		}
+
+		console.log(JSON.stringify(cfg));
+
+		return await this.actorRepository.find(cfg);
 	}
 
 	async insert(params: any) : Promise<InsertResult> {
