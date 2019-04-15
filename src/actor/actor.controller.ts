@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Query, Param, ParseIntPipe, Body, Post } from '@nestjs/common';
 import { ActorService } from './actor.service';
 import { Actor } from './actor.sakila.entity';
 import { InsertResult, DeleteResult } from 'typeorm';
@@ -39,6 +39,13 @@ export class ActorController {
 
 	@Get("save")
 	async save(@Query() params): Promise<Actor> {
+		console.log(params);
+
+		return await this.actorService.save(params);
+	}
+
+	@Post('modify')
+	async modify(@Body() params): Promise<Actor> {
 		console.log(params);
 
 		return await this.actorService.save(params);
