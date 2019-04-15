@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Param, ParseIntPipe } from '@nestjs/common';
 import { ActorService } from './actor.service';
 import { Actor } from './actor.sakila.entity';
 import { InsertResult, DeleteResult } from 'typeorm';
@@ -19,6 +19,15 @@ export class ActorController {
 		console.log(params);
 
 		const items = await this.actorService.find(params);
+		
+		return items;
+	}
+
+	@Get('get/:id')
+	async get(@Param('id', new ParseIntPipe()) id): Promise<Actor[]> {
+		console.log(id);
+
+		const items = await this.actorService.find({id: id});
 		
 		return items;
 	}
