@@ -44,6 +44,11 @@ export class ActorController {
 		return await this.actorService.save(params);
 	}
 
+	@Get("create")
+	async create(@Query() params): Promise<InsertResult> {
+		return await this.actorService.insert(params);
+	}
+
 	@Post('modify')
 	async modify(@Body() params): Promise<Actor> {
 		console.log(params);
