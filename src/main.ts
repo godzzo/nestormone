@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 // import { cookieParser } from 'cookie-parser';
 import * as helmet from 'helmet';
-import * as csurf from 'csurf';
+// import * as csurf from 'csurf';
 import * as cookieParser from 'cookie-parser';
+import * as session from "express-session";
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -10,6 +11,14 @@ async function bootstrap() {
 
 	app.use(helmet());
 	app.use(cookieParser('WHYNEEDED'));
+	app.use(session({
+		secret: 'WHYNEEDED',
+		resave: false,
+		saveUninitialized: true,
+		cookie: { 
+			secure: false 
+		}
+	}));
 	app.enableCors();
 //	app.use(csurf());
 

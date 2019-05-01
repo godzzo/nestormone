@@ -7,6 +7,7 @@ import { ExpressSessionMiddleware } from '@nest-middlewares/express-session';
 })
 export class BasesesModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
+    /*
     ExpressSessionMiddleware.configure({
       secret: 'WHYNEEDED',
       proxy: true,
@@ -20,5 +21,6 @@ export class BasesesModule implements NestModule {
       .forRoutes(
         {path: 'baseses', method: RequestMethod.ALL}
       );
+    */
   }
 }
