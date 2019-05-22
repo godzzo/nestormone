@@ -1,6 +1,6 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { BasesesController } from './baseses.controller';
-import { ExpressSessionMiddleware } from '@nest-middlewares/express-session';
+// import { ExpressSessionMiddleware } from '@nest-middlewares/express-session';
 
 @Module({
   controllers: [BasesesController],

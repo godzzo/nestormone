@@ -26,6 +26,15 @@ export class ActorService {
 			cfg.take = parseInt(filters.take);
 		}
 
+		if (filters.order) {
+			cfg.order = {};
+			cfg.order[filters.order] = "ASC";
+
+			if (filters.orderDir) {
+				cfg.order[filters.order] = filters.orderDir;
+			}
+		}
+
 		console.log(JSON.stringify(cfg));
 
 		return await this.actorRepository.find(cfg);
