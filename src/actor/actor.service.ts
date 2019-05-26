@@ -15,21 +15,29 @@ export class ActorService {
 	}
 
 	async find(filters: any) : Promise<Actor[]> {
+		const cfg: any = this.prepareFilters(filters);
 
-		const cfg : any = { where: filters };
+		return await this.actorRepository.find(cfg);
+	}
+
+	async findAndCount(filters: any) : Promise<[Actor[], number]> {
+		const cfg: any = this.prepareFilters(filters);
+
+		return await this.actorRepository.findAndCount(cfg);
+	}
+
+	private prepareFilters(filters: any): any {
+		const cfg: any = { where: filters };
 
 		if (filters.skip) {
 			cfg.skip = parseInt(filters.skip);
 		}
-
 		if (filters.take) {
 			cfg.take = parseInt(filters.take);
 		}
-
 		if (filters.order) {
 			cfg.order = {};
 			cfg.order[filters.order] = "ASC";
-
 			if (filters.orderDir) {
 				cfg.order[filters.order] = filters.orderDir;
 			}
@@ -37,7 +45,7 @@ export class ActorService {
 
 		console.log(JSON.stringify(cfg));
 
-		return await this.actorRepository.find(cfg);
+		return cfg;
 	}
 
 	async insert(params: any) : Promise<InsertResult> {

@@ -23,6 +23,15 @@ export class ActorController {
 		return items;
 	}
 
+	@Get("findAndCount")
+	async findAndCount(@Query() params): Promise<any> {
+		console.log(params);
+
+		const [items, count] = await this.actorService.findAndCount(params);
+		
+		return {items, count};
+	}
+
 	@Get('get/:id')
 	async get(@Param('id', new ParseIntPipe()) id): Promise<Actor[]> {
 		console.log(id);
