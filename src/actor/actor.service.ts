@@ -37,10 +37,8 @@ export class ActorService {
 		}
 		if (filters.order) {
 			cfg.order = {};
-			cfg.order[filters.order] = "ASC";
-			if (filters.orderDir) {
-				cfg.order[filters.order] = filters.orderDir;
-			}
+
+			cfg.order[filters.order] = filters.orderDir? filters.orderDir.toUpperCase():  "ASC";
 		}
 
 		console.log(JSON.stringify(cfg));
