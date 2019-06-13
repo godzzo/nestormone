@@ -4,7 +4,9 @@ import { AppService } from './app.service';
 import { PhotoService } from './photo/photo.service';
 import { PhotoModule } from './photo/photo.module';
 import { ActorService } from './actor/actor.service';
+import { CustomerService } from './customer/customer.service';
 import { ActorModule } from './actor/actor.module';
+import { CustomerModule } from './customer/customer.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { ChartController } from './chart/chart.controller';
@@ -37,11 +39,12 @@ const defaultOptions = {
 		}),
 		TypeOrmModule.forRoot(),
 		ActorModule,
+		CustomerModule,
 		PhotoModule,
 		BasesesModule
 	],
 	controllers: [AppController, ChartController],
-	providers: [AppService, ActorService, PhotoService],
+	providers: [AppService, ActorService, CustomerService, PhotoService],
 })
 export class AppModule {
 	constructor(private readonly connection: Connection) {}

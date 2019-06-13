@@ -53,8 +53,8 @@ export class ActorController {
 		return await this.actorService.save(params);
 	}
 
-	@Get("create")
-	async create(@Query() params): Promise<InsertResult> {
+	@Post("create")
+	async create(@Body() params): Promise<InsertResult> {
 		return await this.actorService.insert(params);
 	}
 
