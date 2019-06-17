@@ -6,6 +6,7 @@ import { PhotoModule } from './photo/photo.module';
 import { ActorService } from './actor/actor.service';
 import { CustomerService } from './customer/customer.service';
 import { ActorModule } from './actor/actor.module';
+import { StoreModule } from './store/store.module';
 import { CustomerModule } from './customer/customer.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
@@ -40,6 +41,7 @@ const defaultOptions = {
 		TypeOrmModule.forRoot(),
 		ActorModule,
 		CustomerModule,
+		StoreModule,
 		PhotoModule,
 		BasesesModule
 	],

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Store } from 'src/store/store.sakila.entity';
 
 @Entity()
 export class Customer {
@@ -54,5 +55,7 @@ export class Customer {
 	@Column({"name":"last_update"})
 	lastUpdate: Date;
 	
-
+    @ManyToOne(type => Store, store => store.customers)
+    @JoinColumn({ name: 'store_id' })
+	store: Store;
 }
